@@ -4,6 +4,8 @@
 
 @section('content')
 
+    @include('common.success')
+
     <div class="row"><!--la clase row nos posiciona a un lado los elementos-->
         <!--nos traemos el arreglo con los entrenadores y los vamos guardando en la variable trainer-->
         @foreach($trainers as $trainer)

@@ -63,7 +63,7 @@ class TrainerController extends Controller
         $trainer->description=$request->input('description');
         $trainer->save();
 
-        return redirect()->route('trainers.index');
+        return redirect()->route('trainers.index')->with('status','Se ha creado correctamente');
         //return 'Saved';
 
         //aqui la peticion del post//return $request->all();
@@ -122,7 +122,7 @@ class TrainerController extends Controller
         
         $trainer->save();
 
-        return redirect()->route('trainers.show', [$trainer]);
+        return redirect()->route('trainers.show', [$trainer])->with('status','Datos atualizados correctamente');
         //return 'se actualizó correctamente';
     }
 
@@ -139,7 +139,7 @@ class TrainerController extends Controller
         $file_path = public_path().'/images/'.$trainer->avatar;//nos lanza la carpeta dode se encuentra la carpeta publica
         \File::delete($file_path);
         $trainer->delete();
-        return redirect()->route('trainers.index');
+        return redirect()->route('trainers.index')->with('status','Se eliminó correctamente');
         //return 'Ha sido eliminado';
     }
 }

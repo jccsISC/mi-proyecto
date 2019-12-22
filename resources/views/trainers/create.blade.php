@@ -3,16 +3,8 @@
 
 
 @section('content')
-        <!--si hay algun error entonces recorremos con un foreach el array de errores-->
-        @if($errors->any())
-
-            <div class="alert alert-danger">
-                @foreach($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </div>
-        @endif  
     
+    @include('common.errors')
 
     <!--con method utilizamos el vervo para la request y con action accede a la ruta nuestra carpeta-->
     <form class="form-group" method="POST" action="/trainers" enctype="multipart/form-data"><!--con este ultimo atributo a nuestro formulario ahora si enviará todo lo que contenga-->

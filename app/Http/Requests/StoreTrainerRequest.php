@@ -25,7 +25,7 @@ class StoreTrainerRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max: 10',
+            'name' => 'required|max: 20',
             'slug' => 'required',
             'avatar' => 'required|image',
             'description' => 'required'
