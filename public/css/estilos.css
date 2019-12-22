@@ -1,0 +1,14 @@
+
+
+.micard{
+    width:18rem;
+    margin-top: 70px;
+    box-shadow: 0px 0px 5px rgb(0, 0, 0, .4);
+}
+
+.mi-imagen{
+    height:100px;
+    width:100px; 
+    background-color:#efefef; 
+    margin:20px;
+}
