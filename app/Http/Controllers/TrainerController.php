@@ -63,7 +63,8 @@ class TrainerController extends Controller
         $trainer->description=$request->input('description');
         $trainer->save();
 
-        return 'Saved';
+        return redirect()->route('trainers.index');
+        //return 'Saved';
 
         //aqui la peticion del post//return $request->all();
         //para mostrar solo el atributo que queramos
@@ -121,7 +122,8 @@ class TrainerController extends Controller
         
         $trainer->save();
 
-        return 'se actualizó correctamente';
+        return redirect()->route('trainers.show', [$trainer]);
+        //return 'se actualizó correctamente';
     }
 
     /**
@@ -130,8 +132,14 @@ class TrainerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Trainer $trainer)
     {
-        //
+
+        //eliminar un archivo del proyecto
+        $file_path = public_path().'/images/'.$trainer->avatar;//nos lanza la carpeta dode se encuentra la carpeta publica
+        \File::delete($file_path);
+        $trainer->delete();
+        return redirect()->route('trainers.index');
+        //return 'Ha sido eliminado';
     }
 }
