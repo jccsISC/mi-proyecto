@@ -21,6 +21,7 @@ Route::get('prueba/{name}','PruebaController@prueba');
 
 //Ruta para los entrenadores pokemon
 Route::resource('trainers','TrainerController');
+Route::resource('pokemons','PokemonController');
 
 Auth::routes();
 
