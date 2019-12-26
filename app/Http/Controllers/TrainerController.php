@@ -20,8 +20,12 @@ class TrainerController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)//recordemos que el request tiene con el la peticion del usuario
     {
+        //tenemos acceso a este usuario
+        $request->user()->authorizeRoles(['admin']);//aui solo nos va a autorizar a todos los roles que sean admin
+
+
         //jalamos los datos del modelo Trainer con all() consultamos todos los registros del modelo
         $trainers = Trainer::all();
 

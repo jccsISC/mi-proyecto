@@ -30,5 +30,13 @@ class UserTableSeeder extends Seeder
         $user->save();
         //mediante el usuario accede a su metodo roles que es la relacion entre el usuario y los roles
         $user->roles()->attach($role_admin);
+
+        $user = new User();
+        $user->name = "Admin";
+        $user->email = "silva.jc@hotmail.com";
+        $user->password = bcrypt('query');
+        $user->save();
+        //mediante el usuario accede a su metodo roles que es la relacion entre el usuario y los roles
+        $user->roles()->attach($role_admin);
     }
 }
