@@ -32,7 +32,9 @@ class PokemonController extends Controller
 
             //como es una respuesta satisfactoria le notificaremos al request
             return response()->json([
-                "message" => "Pokemon creado correctamente."
+                "message" => "Pokemon creado correctamente.",
+                //le tenemos que mandar el pokemon que estamos creando creamos la llave pokemon
+                "pokemon" => $pokemon
             ],200);
         }
     }

@@ -17,15 +17,21 @@
 </template>
 
 <script>
+    //importamos nuestro even-bus
+    import EventBus from '../event-bus';
+    
     export default {
-
         data(){
             return{
                 pokemons: [],
                 loading: true
             }
         },
-
+        created(){
+            EventBus.$on('pokemon-added',data => {
+                this.pokemons.push(data)
+            })
+        },
         mounted(){
             //este es el ciclo de vida del componente es donde mandaremos las peticiones aqui utilizaremos axios
             axios
@@ -34,7 +40,6 @@
                     this.pokemons = res.data
                     this.loading = false
                 })
-
         }
     }
 </script>

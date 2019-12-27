@@ -34,6 +34,10 @@
 
 
 <script>
+
+    //importamos nuestro even-bus
+    import EventBus from '../event-bus';
+
     export default {
       //definimos los atributos que utilizaremos
       data(){
@@ -53,9 +57,11 @@
             description: this.description
           })
           .then(function(res){
-            console.log(res)
+            //console.log(res.data.pokemon)//nos mostrara la respuesta de ese pokemon creado con la llave que creamos
             //le damos un hide a nuestro modal
             $('#addPokemon').modal('hide')
+            //le especificamos que queremos emitir un evento
+            EventBus.$emit('pokemon-added',res.data.pokemon)//con esto generamos un evento con informacion
           })
           .catch(function(err){
             console.log(err)
