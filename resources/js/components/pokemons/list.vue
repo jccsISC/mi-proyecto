@@ -18,7 +18,7 @@
 
 <script>
     //importamos nuestro even-bus
-    import EventBus from '../event-bus';
+    import EventBus from '../../event-bus';
     
     export default {
         data(){
