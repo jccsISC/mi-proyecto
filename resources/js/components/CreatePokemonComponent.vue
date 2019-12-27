@@ -9,18 +9,19 @@
           </button>
         </div>
         <div class="modal-body">
-      	  <form>
+          <!--detenemos el submit y lo manejamos conforme lo ocupemos, prevenimos que se envie y lo mandamos al metodo savePokemon-->
+      	  <form @submit.prevent="savePokemon">
 	          <div class="form-group">
 			        <label>Pokemon</label>
-			        <input type="text" class="form-control" placeholder="Ingresa el nombre del pokemon">
+			        <input type="text" class="form-control" placeholder="Ingresa el nombre del pokemon" v-model="name">
 		  	    </div>
 		  	    <div class="form-group">
 			        <label>Picture</label>
-			        <input type="text" class="form-control" placeholder="Ingresa la url de una imagen" >
+			        <input type="text" class="form-control" placeholder="Ingresa la url de una imagen" v-model="picture">
 		  	    </div>
             <div class="form-group">
 			        <label>Description</label>
-			        <input type="text" class="form-control" placeholder="Ingresa una descripción" >
+			        <input type="text" class="form-control" placeholder="Ingresa una descripción" v-model="description">
 		  	    </div>
 
 		  	    <button type="submit" class="btn btn-primary">Save</button>
@@ -34,7 +35,33 @@
 
 <script>
     export default {
-    
+      //definimos los atributos que utilizaremos
+      data(){
+        return{
+          name: null,
+          picture: null,
+          description: null
+        }
+      },
+      methods:{ //especificamos la seccion de metodos dentro de vue
+        //definimos el metodo que le dimos al formulario
+        savePokemon: function(){
+         //de esta manera enviamos la informacion
+         axios.post('http://127.0.0.1:8000/pokemons',{
+            name: this.name,
+            picture: this.picture,
+            description: this.description
+          })
+          .then(function(res){
+            console.log(res)
+            //le damos un hide a nuestro modal
+            $('#addPokemon').modal('hide')
+          })
+          .catch(function(err){
+            console.log(err)
+          });
+        }
+      }
     }
 </script>
 

@@ -4,7 +4,7 @@
         <spinner v-show="loading"></spinner>
         <div class="col-sm" v-for="(pokemon,ciclopokemon) in pokemons" :key="ciclopokemon"><!--toma en cuenta la cantidad de cards-->
             <div class="card text-center micard">
-                <img class="card-img-top rounded-circle mx-auto d-block mi-imagen" src="images/" alt="">
+                <img class="card-img-top rounded-circle mx-auto d-block mi-imagen" v-bind:src="pokemon.picture" alt="">
                 <div class="card-body">
                     <!--imprimimos cada trainer pero solo el nombre-->
                     <h5 class="card-title">{{ pokemon.name }}</h5>
