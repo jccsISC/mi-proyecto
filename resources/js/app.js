@@ -23,6 +23,8 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('pokemons-component', require('./components/PokemonsComponent.vue').default);
 Vue.component('trainer-component', require('./components/trainers/TrainerComponent.vue').default);
 Vue.component('spinner', require('./components/Spinner.vue').default);
+Vue.component('add-pokemon-btn', require('./components/AddPokemonComponent.vue').default);
+Vue.component('create-form-pokemon', require('./components/CreatePokemonComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
