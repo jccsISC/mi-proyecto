@@ -1889,14 +1889,18 @@ __webpack_require__.r(__webpack_exports__);
     //especificamos la seccion de metodos dentro de vue
     //definimos el metodo que le dimos al formulario
     savePokemon: function savePokemon() {
-      //de esta manera enviamos la informacion
-      axios.post('http://127.0.0.1:8000/pokemons', {
+      //creamos una variable para establecer la ruta actual en la que estamos
+      var currentRoute = window.location.pathname; //console.log(currentRoute)
+      //de esta manera enviamos la informacion cambiamos las comillas para hacer interpolaciond e cadenas
+
+      axios.post("http://127.0.0.1:8000".concat(currentRoute, "/pokemons"), {
         name: this.name,
         picture: this.picture,
         description: this.description
       }).then(function (res) {
-        //console.log(res.data.pokemon)//nos mostrara la respuesta de ese pokemon creado con la llave que creamos
+        console.log(res); //console.log(res.data.pokemon)//nos mostrara la respuesta de ese pokemon creado con la llave que creamos
         //le damos un hide a nuestro modal
+
         $('#addPokemon').modal('hide'); //le especificamos que queremos emitir un evento
 
         _event_bus__WEBPACK_IMPORTED_MODULE_0__["default"].$emit('pokemon-added', res.data.pokemon); //con esto generamos un evento con informacion
@@ -1956,8 +1960,10 @@ __webpack_require__.r(__webpack_exports__);
   mounted: function mounted() {
     var _this2 = this;
 
-    //este es el ciclo de vida del componente es donde mandaremos las peticiones aqui utilizaremos axios
-    axios.get('http://127.0.0.1:8000/pokemons').then(function (res) {
+    var currentRoute = window.location.pathname; //este es el ciclo de vida del componente es donde mandaremos las peticiones aqui utilizaremos axios
+
+    axios.get("http://127.0.0.1:8000".concat(currentRoute, "/pokemons")).then(function (res) {
+      console.log(res);
       _this2.pokemons = res.data;
       _this2.loading = false;
     });

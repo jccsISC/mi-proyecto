@@ -50,13 +50,18 @@
       methods:{ //especificamos la seccion de metodos dentro de vue
         //definimos el metodo que le dimos al formulario
         savePokemon: function(){
-         //de esta manera enviamos la informacion
-         axios.post('http://127.0.0.1:8000/pokemons',{
+          //creamos una variable para establecer la ruta actual en la que estamos
+          let currentRoute = window.location.pathname
+          //console.log(currentRoute)
+
+         //de esta manera enviamos la informacion cambiamos las comillas para hacer interpolaciond e cadenas
+         axios.post(`http://127.0.0.1:8000${currentRoute}/pokemons`,{
             name: this.name,
             picture: this.picture,
             description: this.description
           })
           .then(function(res){
+            console.log(res)
             //console.log(res.data.pokemon)//nos mostrara la respuesta de ese pokemon creado con la llave que creamos
             //le damos un hide a nuestro modal
             $('#addPokemon').modal('hide')

@@ -21,5 +21,7 @@
             <button type="submit" class="btn btn-danger mt-2">Eliminar</button>
         </form>
     </div>
-
+    <modal-button></modal-button>
+    <create-form-pokemon></create-form-pokemon>
+    <list-of-pokemons></list-of-pokemons>
 @endsection
