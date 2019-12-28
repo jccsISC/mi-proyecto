@@ -12,4 +12,9 @@ class Trainer extends Model
     public function getRouteKeyName() {
         return 'slug';
     }
+
+    //aqui especificamos la relacion de pokemons a entrenador
+    public function pokemons(){
+        return $this->hasMany('App\Pokemon');
+    }
 }
